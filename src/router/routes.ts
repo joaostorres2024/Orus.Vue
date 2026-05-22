@@ -7,7 +7,7 @@ const routes: RouteConfig[] = [
   },
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/layoutOrus.vue'),
     children: [
       { path: '', component: () => import('pages/Home.vue') }
     ]
