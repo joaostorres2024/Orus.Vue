@@ -25,7 +25,7 @@ Siga os passos abaixo para configurar e rodar o projeto Orus em sua máquina loc
 
     ```bash
     git clone <URL_DO_REPOSITORIO>
-    cd orus
+    cd Orus.Vue
     ```
 
 2.  **Instale o Quasar CLI globalmente** (se ainda não tiver):
