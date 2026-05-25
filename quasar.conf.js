@@ -22,8 +22,8 @@ module.exports = configure(function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://v1.quasar.dev/quasar-cli/boot-files
     boot: [
-      
-      
+
+
     ],
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -43,6 +43,7 @@ module.exports = configure(function (/* ctx */) {
 
       'roboto-font', // optional, you are not bound to it
       'material-icons', // optional, you are not bound to it
+      'material-icons-outlined'
     ],
 
     // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build

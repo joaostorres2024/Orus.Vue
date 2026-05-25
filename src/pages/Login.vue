@@ -2,10 +2,10 @@
   <div class="row fullscreen items-center justify-center">
     <div class="column items-center justify-center" style="width: 1000px">
     <img src="../assets//LogoOrus.png" alt="" style="width: 150px; margin-top: -100px;">
-      <p style="font-size: 30px" class="text-bold">
-        Faça o Login para acessar o Orus
+      <p style="font-size: 30px" class="text-bold q-mb-sm">
+        Faça o login para acessar o Coden Orus
       </p>
-      <p>Faça login para acessar o Orus e continuar seu atendimento.</p>
+      <p>Acesse sua conta e acompanhe seus chamados.</p>
       <div class="column" style="width: 400px">
         <q-input label="Usuário" outlined dense type="text" class="q-my-md" />
         <q-input
@@ -25,7 +25,7 @@
         </q-input>
         <q-btn
           type="submit"
-          label="Entrar em Orus"
+          label="Entrar"
           class="full-width bg-primary text-white q-my-md q-pa-xs"
           unelevated
           @click="$router.push('/')"
