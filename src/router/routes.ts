@@ -9,7 +9,9 @@ const routes: RouteConfig[] = [
     path: '/',
     component: () => import('layouts/layoutOrus.vue'),
     children: [
-      { path: '', component: () => import('pages/Home.vue') }
+      { path: '', component: () => import('pages/Home.vue') },
+      { path: 'Chamados', component: () => import('pages/Chamados.vue') },
+      { path: 'Usuarios', component: () => import('pages/Usuarios.vue') }
     ]
   },
 

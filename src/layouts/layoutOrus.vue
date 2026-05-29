@@ -26,18 +26,18 @@
           <q-item-section class="menu-label">Dashboard</q-item-section>
         </q-item>
 
-        <q-item clickable v-ripple to="/Usuarios" class="menu-item b-r-8 q-mb-xs" active-class="menu-item-active">
-          <q-item-section avatar>
-            <q-icon name="o_group" size="20px" />
-          </q-item-section>
-          <q-item-section class="menu-label">Usuários</q-item-section>
-        </q-item>
-
         <q-item clickable v-ripple to="/Chamados" class="menu-item b-r-8 q-mb-xs" active-class="menu-item-active">
           <q-item-section avatar>
             <q-icon name="o_confirmation_number" size="20px" />
           </q-item-section>
           <q-item-section class="menu-label">Chamados</q-item-section>
+        </q-item>
+
+        <q-item clickable v-ripple to="/Usuarios" class="menu-item b-r-8 q-mb-xs" active-class="menu-item-active">
+          <q-item-section avatar>
+            <q-icon name="o_group" size="20px" />
+          </q-item-section>
+          <q-item-section class="menu-label">Usuários</q-item-section>
         </q-item>
 
         <div class="nav-label q-px-sm q-mt-md q-mb-xs">Sistema</div>
@@ -140,12 +140,12 @@ export default defineComponent({
 
 .menu-item-active {
   background: #EEF2FF !important;
-  color: #4F46E5 !important;
+  color: #7F56D8 !important;
   font-weight: 600;
 }
 
 .menu-item-active .q-icon {
-  color: #4F46E5 !important;
+  color: #7F56D8 !important;
 }
 
 .b-r-8 {
