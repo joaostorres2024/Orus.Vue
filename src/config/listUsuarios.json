@@ -1,0 +1,28 @@
+{
+  "columns": [
+    {
+      "name": "id_usuario",
+      "label": "ID Usuário",
+      "field": "id_usuario",
+      "align": "left"
+    },
+    {
+      "name": "nome_usuario",
+      "label": "Usuário",
+      "field": "nome_usuario",
+      "align": "left"
+    },
+    {
+      "name": "email",
+      "label": "Email Coden",
+      "field": "email",
+      "align": "left"
+    },
+    {
+      "name": "acoes",
+      "label": "Ações",
+      "field": "acoes",
+      "align": "right"
+    }
+  ]
+}
