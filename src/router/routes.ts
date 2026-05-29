@@ -11,7 +11,9 @@ const routes: RouteConfig[] = [
     children: [
       { path: '', component: () => import('pages/Home.vue') },
       { path: 'Chamados', component: () => import('pages/Chamados.vue') },
-      { path: 'Usuarios', component: () => import('pages/Usuarios.vue') }
+      { path: 'Usuarios', component: () => import('pages/Usuarios.vue') },
+      { path: 'Configuracoes', component: () => import('pages/Configuracoes.vue') },
+      { path: 'Admins', component: () => import('pages/Admins.vue') }
     ]
   },
 

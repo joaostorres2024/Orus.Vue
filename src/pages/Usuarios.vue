@@ -52,60 +52,78 @@ export default class ModuleComponent extends Vue {
 
   colunasUsuarios = listUsuarios.columns
 
-  dadosMockados = 
-    
-[
+dadosMockados = [
   {
     "id_usuario": 1,
-    "nome_usuario": "João Silva",
-    "email": "joao.silva@coden.com",
+    "estabelecimento_id": 1,
+    "nome_usuario": "TechStore Brasil",
+    "email": "techstore@coden.erp",
+    "permissoes": "Usuário Coden"
   },
   {
     "id_usuario": 2,
-    "nome_usuario": "Maria Oliveira",
-    "email": "maria.oliveira@coden.com",
+    "estabelecimento_id": 2,
+    "nome_usuario": "Coden",
+    "email": "coden@admin.com",
+    "permissoes": "Administrador"
   },
   {
     "id_usuario": 3,
-    "nome_usuario": "Carlos Souza",
-    "email": "carlos.souza@coden.com",
+    "estabelecimento_id": 3,
+    "nome_usuario": "Loja Mais Construção",
+    "email": "maisconstrucao@coden.erp",
+    "permissoes": "Usuário Coden"
   },
   {
     "id_usuario": 4,
-    "nome_usuario": "Ana Pereira",
-    "email": "ana.pereira@coden.com",
+    "estabelecimento_id": 4,
+    "nome_usuario": "Auto Peças Rápidas",
+    "email": "autopecasrapidas@coden.erp",
+    "permissoes": "Usuário Coden"
   },
   {
     "id_usuario": 5,
-    "nome_usuario": "Lucas Fernandes",
-    "email": "lucas.fernandes@coden.com",
+    "estabelecimento_id": 5,
+    "nome_usuario": "Padaria Sabor Caseiro",
+    "email": "saborcaseiro@coden.erp",
+    "permissoes": "Usuário Coden"
   },
   {
     "id_usuario": 6,
-    "nome_usuario": "Beatriz Costa",
-    "email": "beatriz.costa@coden.com",
+    "estabelecimento_id": 6,
+    "nome_usuario": "Papelaria Criativa",
+    "email": "papelariacriativa@coden.erp",
+    "permissoes": "Usuário Coden"
   },
   {
     "id_usuario": 7,
-    "nome_usuario": "Rafael Martins",
-    "email": "rafael.martins@coden.com",
+    "estabelecimento_id": 7,
+    "nome_usuario": "Informática Upgrade",
+    "email": "upgradeinfo@coden.erp",
+    "permissoes": "Usuário Coden"
   },
   {
     "id_usuario": 8,
-    "nome_usuario": "Fernanda Rocha",
-    "email": "fernanda.rocha@coden.com",
+    "estabelecimento_id": 8,
+    "nome_usuario": "Moda Urbana Store",
+    "email": "modaurbana@coden.erp",
+    "permissoes": "Usuário Coden"
   },
   {
     "id_usuario": 9,
-    "nome_usuario": "Gabriel Alves",
-    "email": "gabriel.alves@coden.com",
+    "estabelecimento_id": 9,
+    "nome_usuario": "Distribuidora Central DF",
+    "email": "centraldf@coden.erp",
+    "permissoes": "Usuário Coden"
   },
   {
     "id_usuario": 10,
-    "nome_usuario": "Juliana Barbosa",
-    "email": "juliana.barbosa@coden.com",
+    "estabelecimento_id": 10,
+    "nome_usuario": "Casa do Eletricista",
+    "email": "eletricista@coden.erp",
+    "permissoes": "Usuário Coden"
   }
-  ]
+]
 
 }
 </script>

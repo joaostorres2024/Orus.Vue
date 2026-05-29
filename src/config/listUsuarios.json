@@ -7,6 +7,12 @@
       "align": "left"
     },
     {
+      "name": "estabelecimento_id",
+      "label": "Estabelecimento ID",
+      "field": "estabelecimento_id",
+      "align": "left"
+    },
+    {
       "name": "nome_usuario",
       "label": "Usuário",
       "field": "nome_usuario",
@@ -16,6 +22,12 @@
       "name": "email",
       "label": "Email Coden",
       "field": "email",
+      "align": "left"
+    },
+    {
+      "name": "permissoes",
+      "label": "Permissões",
+      "field": "permissoes",
       "align": "left"
     },
     {

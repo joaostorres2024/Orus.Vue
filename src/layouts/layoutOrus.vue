@@ -58,6 +58,19 @@
           <q-item-section class="menu-label">Usuários</q-item-section>
         </q-item>
 
+        <q-item
+          clickable
+          v-ripple
+          to="/Admins"
+          class="menu-item b-r-8 q-mb-xs"
+          active-class="menu-item-active"
+        >
+          <q-item-section avatar>
+            <q-icon name="o_manage_accounts" size="20px" />
+          </q-item-section>
+          <q-item-section class="menu-label">Admins</q-item-section>
+        </q-item>
+
         <div class="nav-label q-px-sm q-mt-md q-mb-xs">Sistema</div>
 
         <q-item

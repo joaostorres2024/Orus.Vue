@@ -80,7 +80,10 @@
       <div>
         <q-card class="no-shadow border q-pa-md">
           <div class="column">
-            <p class="text-bold" style="font-size: 16px">Chamado# 0001-CRS63</p>
+            <div class="row items-center justify-between">
+              <p class="text-bold" style="font-size: 16px">Chamado# 0001-CRS63</p>
+              <p style="font-size: 12px" class="text-grey">Criado em 29/05/2026 14:57</p>
+            </div>
             <p style="font-size: 14px">
               Como depositar meu dinheiro no portal?
             </p>
