@@ -13,7 +13,7 @@ const routes: RouteConfig[] = [
       { path: 'Chamados', component: () => import('pages/Chamados.vue') },
       { path: 'Usuarios', component: () => import('pages/Usuarios.vue') },
       { path: 'Configuracoes', component: () => import('pages/Configuracoes.vue') },
-      { path: 'Admins', component: () => import('pages/Admins.vue') }
+      { path: 'Estabelecimentos', component: () => import('pages/Estabelecimentos.vue') }
     ]
   },
 
