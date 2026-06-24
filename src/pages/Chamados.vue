@@ -90,8 +90,8 @@
       </div>
 
       <div class="column q-gutter-md">
-        <q-input v-model="formNovo.titulo" label="Título do chamado" outlined :counter="true" maxlength="200" />
-        <q-input v-model="formNovo.descricao" label="Descreva o problema detalhadamente" outlined type="textarea" rows="6" />
+        <q-input v-model="formNovo.titulo" label="Título do chamado" dense outlined :counter="true" maxlength="200" />
+        <q-input v-model="formNovo.descricao" label="Descreva o problema detalhadamente" dense outlined type="textarea" rows="6" />
 
         <div>
           <p class="text-weight-medium q-mb-sm" style="font-size:13px"><q-icon name="o_image" class="q-mr-xs" />Imagens</p>
