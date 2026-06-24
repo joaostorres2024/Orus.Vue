@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: orus-vue
+    env: static
+    buildCommand: npm install && quasar build
+    staticPublishPath: dist/spa
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
