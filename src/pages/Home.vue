@@ -21,7 +21,7 @@
             <q-icon name="o_confirmation_number" color="orange" size="20px" />
           </div>
           <q-skeleton v-if="carregando" type="text" width="60px" height="40px" />
-          <div v-else class="text-h4 text-bold text-dark">{{ (stats.chamados && stats.chamados.abertos) || 0 }}</div>
+          <div v-else class="text-h4 text-bold text-dark">{{ (stats.chamados && stats.chamados.em_andamento) || 0 }}</div>
         </q-card>
       </div>
 
@@ -68,13 +68,14 @@
           <div v-else class="column q-gutter-sm">
             <div
               v-for="chamado in chamadosRecentes"
+              v-if="chamado.status !== 'resolvido'"
               :key="chamado.id"
               class="row items-center justify-between q-pa-sm border b-r-8 cursor-pointer chamado-row"
               @click="irParaChamado(chamado.id)"
             >
               <div class="column col">
                 <div class="row items-center q-gutter-sm">
-                  <p class="q-ma-none text-weight-medium" style="font-size:13px">{{ chamado.titulo }}</p>
+                  <p class="q-ma-none text-weight-medium q-ml-sm q-mt-sm" style="font-size:13px">{{ chamado.titulo }}</p>
                   <q-badge :color="corPrioridade(chamado.prioridade)" style="font-size:10px">
                     {{ labelPrioridade(chamado.prioridade) }}
                   </q-badge>
@@ -112,15 +113,15 @@
               :key="u.id"
               class="row items-center q-gutter-sm q-pa-sm border b-r-8"
             >
-              <div class="bg-primary row items-center justify-center text-white text-bold"
+              <div class="bg-primary row items-center justify-center text-white text-bold q-ma-none"
                 style="width:34px;height:34px;border-radius:100px;font-size:13px;flex-shrink:0">
                 {{ u.nome ? u.nome.charAt(0).toUpperCase() : '?' }}
               </div>
-              <div class="column col">
+              <div class="column col q-ma-none q-ml-sm">
                 <p class="q-ma-none text-weight-medium ellipsis" style="font-size:13px">{{ u.nome }}</p>
                 <p class="q-ma-none text-grey ellipsis" style="font-size:11px">{{ u.email }}</p>
               </div>
-              <q-badge :color="u.role === 'adm' ? 'purple' : 'blue-grey'" style="font-size:10px">
+              <q-badge :color="u.role === 'adm' ? 'purple' : 'blue-grey'" style="font-size:10px;" class="q-ma-none">
                 {{ u.role === 'adm' ? 'Administrador' : 'Usuário' }}
               </q-badge>
             </div>
@@ -175,7 +176,7 @@ export default class Dashboard extends Vue {
     return new Date(data).toLocaleString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' })
   }
 
-  corPrioridade(p: string) { return ({ baixa:'blue-grey', media:'orange', alta:'deep-orange' } as any)[p] || 'grey' }
+  corPrioridade(p: string) { return ({ baixa:'blue-grey', media:'orange', alta:'red' } as any)[p] || 'grey' }
   labelPrioridade(p: string) { return ({ baixa:'Baixa', media:'Média', alta:'Alta' } as any)[p] || p }
   corStatus(s: string) { return ({ aberto:'primary', em_andamento:'orange', resolvido:'positive', fechado:'grey' } as any)[s] || 'grey' }
   labelStatus(s: string) { return ({ aberto:'Aberto', em_andamento:'Em andamento', resolvido:'Resolvido', fechado:'Fechado' } as any)[s] || s }

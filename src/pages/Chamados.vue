@@ -24,7 +24,6 @@
           <q-tab class="q-mr-md" name="aberto"       icon="o_mark_as_unread"   label="Abertos" />
           <q-tab class="q-mr-md" name="em_andamento" icon="o_forward_to_inbox" label="Em andamento" />
           <q-tab class="q-mr-md" name="resolvido"    icon="o_fact_check"       label="Resolvidos" />
-          <q-tab class="q-mr-md" name="fechado"      icon="o_archive"          label="Fechados" />
         </q-tabs>
       </div>
 
@@ -38,11 +37,11 @@
         <q-card
           v-for="chamado in chamadosFiltrados"
           :key="chamado.id"
-          :class="['no-shadow border q-pa-md cursor-pointer chamado-card', chamado.status === 'fechado' ? 'chamado-fechado' : '']"
+          :class="['no-shadow border q-pa-md cursor-pointer chamado-card', chamado.status === 'resolvido' ? 'chamado-fechado' : '']"
           @click="abrirDetalhe(chamado)"
         >
           <div class="column q-mb-xs">
-            <div class="row items-center q-gutter-xs q-mb-xs">
+            <div class="row items-center q-gutter-xs q-mb-sm">
               <q-badge :color="corPrioridade(chamado.prioridade)" style="font-size:10px;height:18px;display:flex;align-items:center">
                 {{ labelPrioridade(chamado.prioridade) }}
               </q-badge>
@@ -51,28 +50,28 @@
               </q-badge>
             </div>
             <div class="row items-center justify-between">
-              <p class="text-bold q-ma-none" :class="chamado.status === 'fechado' ? 'text-grey-5' : ''" style="font-size:15px">
-                {{ chamado.titulo }}
+              <p class="text-bold q-ma-none" :class="chamado.status === 'resolvido' ? 'text-grey-5' : ''" style="font-size:15px">
+                {{"Chamado N" + chamado.id + " - " + chamado.titulo }}
               </p>
               <p style="font-size:12px" class="text-grey q-ma-none">{{ formatarData(chamado.created_at) }}</p>
             </div>
           </div>
           <p class="q-ma-none q-mt-xs descricao-preview"
-            :class="chamado.status === 'fechado' ? 'text-grey-4' : 'text-grey-7'"
+            :class="chamado.status === 'resolvido' ? 'text-grey-4' : 'text-grey-7'"
             style="font-size:13px">{{ chamado.descricao }}</p>
           <q-separator class="q-my-sm" />
           <div class="row justify-between items-center">
-            <div class="row items-center q-gutter-sm">
-              <div class="row items-center justify-center text-white text-bold"
-                :class="chamado.status === 'fechado' ? 'bg-grey-4' : 'bg-primary'"
+            <div class="row items-center q-gutter-sm q-mt-xs">
+              <div class="row items-center justify-center text-white text-bold q-ma-none q-ml-sm"
+                :class="chamado.status === 'resolvido' ? 'bg-grey-4' : 'bg-primary'"
                 style="width:28px;height:28px;border-radius:100px;font-size:11px;flex-shrink:0">
                 {{ chamado.nome_usuario ? chamado.nome_usuario.charAt(0).toUpperCase() : '?' }}
               </div>
-              <p class="q-ma-none text-grey" style="font-size:12px">{{ chamado.nome_usuario }}</p>
+              <p class="q-ma-none q-ml-sm text-grey" style="font-size:12px">{{ chamado.nome_usuario }}</p>
               <q-chip dense outline size="sm"><q-icon name="o_comment" size="12px" class="q-mr-xs" />{{ chamado.total_comentarios }}</q-chip>
               <q-chip dense outline size="sm"><q-icon name="o_attach_file" size="12px" class="q-mr-xs" />{{ chamado.total_anexos }}</q-chip>
             </div>
-            <q-icon v-if="chamado.status === 'fechado'" name="o_lock" size="16px" class="text-grey-4" />
+            <q-icon v-if="chamado.status === 'resolvido'" name="o_lock" size="16px" class="text-grey-4" />
           </div>
         </q-card>
       </div>
@@ -82,7 +81,7 @@
     <q-card v-else-if="view === 'form'" class="q-pa-lg no-shadow col-12">
       <div class="row items-center justify-between q-mb-lg">
         <div class="row items-center q-gutter-sm">
-          <q-btn flat round dense icon="arrow_back" @click="cancelarForm" />
+          <q-btn class="q-ma-none q-mt-xs q-mr-sm" flat round dense icon="arrow_back" @click="cancelarForm" />
           <p class="text-bold q-ma-none" style="font-size:18px">Abrir Chamado</p>
         </div>
         <q-select v-model="formNovo.prioridade" :options="opcoesPrioridade" outlined dense label="Prioridade"
@@ -90,7 +89,7 @@
       </div>
 
       <div class="column q-gutter-md">
-        <q-input v-model="formNovo.titulo" label="Título do chamado" dense outlined :counter="true" maxlength="200" />
+        <q-input v-model="formNovo.titulo" label="Título do chamado" dense outlined />
         <q-input v-model="formNovo.descricao" label="Descreva o problema detalhadamente" dense outlined type="textarea" rows="6" />
 
         <div>
@@ -128,8 +127,9 @@
         <q-btn flat round dense icon="arrow_back" @click="view = 'lista'" style="flex-shrink:0" />
         <q-badge :color="corPrioridade(chamadoAberto.prioridade)" style="font-size:10px;flex-shrink:0">{{ labelPrioridade(chamadoAberto.prioridade) }}</q-badge>
         <q-badge :color="corStatus(chamadoAberto.status)" outline style="font-size:10px;flex-shrink:0">{{ labelStatus(chamadoAberto.status) }}</q-badge>
-        <p class="text-bold q-ma-none" style="font-size:15px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ chamadoAberto.titulo }}</p>
-        <p class="text-grey q-ma-none" style="font-size:11px;white-space:nowrap;flex-shrink:0">{{ formatarData(chamadoAberto.created_at) }}</p>
+        <p class="text-bold q-ma-none" style="font-size:17px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ chamadoAberto.titulo }}</p>
+        <q-icon name="calendar_month" size="25px" color="black" style="margin-top: -2px;"></q-icon>
+        <p class="q-ma-none" style="font-size:13px;white-space:nowrap;flex-shrink:0">{{ formatarData(chamadoAberto.created_at) }}</p>
       </div>
 
       <div class="row">
@@ -148,7 +148,7 @@
               <p class="secao-label q-ma-none">Imagens ({{ chamadoAberto.anexos ? chamadoAberto.anexos.length : 0 }})</p>
               <div class="row items-center q-gutter-sm">
                 <q-btn flat dense icon="o_attach_file" label="Anexar" color="primary" size="sm"
-                  @click="triggerUploadDetalhe" :disable="chamadoAberto.status === 'fechado' && !isAdm" />
+                  @click="triggerUploadDetalhe" :disable="chamadoAberto.status === 'resolvido' && !isAdm" />
                 <q-btn v-if="imagensNovas.length > 0" unelevated dense icon="o_upload" label="Enviar"
                   color="positive" size="sm" :loading="enviandoAnexo" @click="enviarAnexos" />
                 <input ref="inputAnexoDetalhe" type="file" multiple accept="image/*" style="display:none" @change="onFileChangeDetalhe" />
@@ -182,23 +182,23 @@
 
           <!-- Comentários -->
           <div>
-            <p class="secao-label q-mb-md">Comentários ({{ chamadoAberto.comentarios ? chamadoAberto.comentarios.length : 0 }})</p>
+            <p class="secao-label q-mb-md">Trâmite  ({{ chamadoAberto.comentarios ? chamadoAberto.comentarios.length : 0 }})</p>
 
             <div v-if="!chamadoAberto.comentarios || chamadoAberto.comentarios.length === 0"
-              class="text-grey q-mb-lg" style="font-size:13px">Nenhum comentário ainda.</div>
+              class="text-grey q-mb-lg" style="font-size:13px">Nenhum trâmite ainda.</div>
 
             <div v-else class="column q-gutter-md q-mb-lg">
-              <div v-for="c in chamadoAberto.comentarios" :key="c.id" class="row q-gutter-sm">
+              <div v-for="c in chamadoAberto.comentarios" :key="c.id" class="row q-gutter-sm items-end">
                 <div :class="c.role === 'adm' ? 'bg-purple' : 'bg-primary'"
                   class="row items-center justify-center text-white text-bold"
-                  style="width:32px;height:32px;border-radius:100px;font-size:13px;flex-shrink:0;margin-top:2px">
+                  style="width:32px;height:32px;border-radius:100px;font-size:13px;flex-shrink:0;margin-top:2px;">
                   {{ c.nome_usuario ? c.nome_usuario.charAt(0).toUpperCase() : '?' }}
                 </div>
                 <div class="col">
                   <div class="row items-center q-gutter-xs q-mb-xs">
-                    <p class="q-ma-none text-weight-medium" style="font-size:13px">{{ c.nome_usuario }}</p>
-                    <q-badge v-if="c.role === 'adm'" color="purple" style="font-size:9px">Suporte</q-badge>
-                    <p class="q-ma-none text-grey" style="font-size:11px">· {{ formatarData(c.created_at) }}</p>
+                    <p class="q-ma-none q-ml-xs text-weight-medium" style="font-size:13px">{{ c.nome_usuario }}</p>
+                    <q-badge v-if="c.role === 'adm'" color="purple" style="font-size:9px; margin: 0 5px; margin">Suporte</q-badge>
+                    <p class="q-ma-none text-black" style="font-size:12px">· {{ formatarData(c.created_at) }}</p>
                   </div>
                   <div class="comentario-box q-pa-sm b-r-8">
                     <p class="q-ma-none" style="font-size:13px;line-height:1.6;white-space:pre-wrap">{{ c.texto }}</p>
@@ -209,13 +209,9 @@
 
             <q-separator class="q-mb-md" />
 
-            <div v-if="chamadoAberto.status === 'fechado' && !isAdm" class="row items-center q-gutter-sm text-grey-4">
+            <div v-if="chamadoAberto.status === 'resolvido' && !isAdm" class="row items-center q-gutter-sm text-grey-4">
               <q-icon name="o_lock" size="16px" />
-              <span style="font-size:13px">Chamado fechado — comentários desabilitados.</span>
-            </div>
-            <div v-else class="row q-gutter-sm items-end">
-              <q-input v-model="novoComentario" outlined dense type="textarea" rows="2" label="Adicionar comentário..." class="col" />
-              <q-btn unelevated color="primary" icon="send" :loading="enviandoComentario" :disable="!novoComentario.trim()" @click="enviarComentario" />
+              <span style="font-size:13px">Chamado resolvido — comentários desabilitados.</span>
             </div>
           </div>
         </div>
@@ -225,11 +221,12 @@
 
           <!-- Gerenciar — adm -->
           <div v-if="isAdm">
-            <p class="secao-label q-mb-sm">Gerenciar</p>
+            <p class="secao-label q-mb-md">Gerenciar</p>
             <div class="column q-gutter-sm">
+              <q-input v-model="novoComentario" outlined dense type="textarea" rows="4" label="Adicionar trâmite..." class="col" style="resize :none;" />
               <q-select v-model="novoStatus" :options="opcoesStatus" label="Status" outlined dense emit-value map-options />
               <q-select v-model="novaPrioridade" :options="opcoesPrioridade" label="Prioridade" outlined dense emit-value map-options />
-              <q-btn unelevated color="primary" label="Salvar alterações" :loading="salvando" @click="salvarAlteracoes" class="full-width" />
+              <q-btn unelevated color="primary" label="Salvar alterações" :loading="salvando" @click="salvarAlteracoes" class="" />
             </div>
           </div>
 
@@ -317,7 +314,6 @@ export default class Chamados extends Vue {
     { label: 'Aberto',       value: 'aberto' },
     { label: 'Em andamento', value: 'em_andamento' },
     { label: 'Resolvido',    value: 'resolvido' },
-    { label: 'Fechado',      value: 'fechado' },
   ]
 
   get isAdm() { return authService.isAdm() }
@@ -363,13 +359,12 @@ export default class Chamados extends Vue {
     const t = this.busca.toLowerCase()
     let lista = this.chamados
 
-    // Na aba "todos", esconde os fechados
     if (this.tab === 'todos') {
-      lista = lista.filter((c: any) => c.status !== 'fechado')
+      lista = lista.filter((c: any) => c.status !== 'resolvido')
     }
 
     const filtrado = t
-      ? lista.filter((c: any) => c.titulo.toLowerCase().includes(t))
+      ? lista.filter((c: any) => String(c.id).startsWith(t))
       : lista.slice()
     this.$set(this, 'chamadosFiltrados', filtrado)
   }
@@ -444,6 +439,11 @@ export default class Chamados extends Vue {
   async salvarAlteracoes() {
     this.salvando = true
     try {
+      if(this.novoComentario === ''){
+        this.$q.notify({ type: 'negative', message: 'Trâmite obrgatório.', position: 'top-right' })
+        this.salvando = false
+      }
+      await chamadoService.comentar(this.chamadoAberto.id, this.novoComentario)
       await chamadoService.atualizar(this.chamadoAberto.id, { status: this.novoStatus, prioridade: this.novaPrioridade })
       window.location.reload()
     } catch (err) {
@@ -497,10 +497,10 @@ export default class Chamados extends Vue {
     return new Date(data).toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric' })
   }
 
-  corPrioridade(p: string) { return ({ baixa:'blue-grey', media:'orange', alta:'deep-orange' } as any)[p] || 'grey' }
+  corPrioridade(p: string) { return ({ baixa:'blue-grey', media:'orange', alta:'red' } as any)[p] || 'grey' }
   labelPrioridade(p: string) { return ({ baixa:'Baixa', media:'Média', alta:'Alta' } as any)[p] || p }
-  corStatus(s: string) { return ({ aberto:'primary', em_andamento:'orange', resolvido:'positive', fechado:'grey' } as any)[s] || 'grey' }
-  labelStatus(s: string) { return ({ aberto:'Aberto', em_andamento:'Em andamento', resolvido:'Resolvido', fechado:'Fechado' } as any)[s] || s }
+  corStatus(s: string) { return ({ aberto:'primary', em_andamento:'orange', resolvido:'positive' } as any)[s] || 'grey' }
+  labelStatus(s: string) { return ({ aberto:'Aberto', em_andamento:'Em andamento', resolvido:'Resolvido' } as any)[s] || s }
 }
 </script>
 
@@ -513,10 +513,10 @@ export default class Chamados extends Vue {
 .chamado-fechado:hover { background: #f5f5f5; opacity: 1; }
 .descricao-preview  { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.5; }
 .comentario-box     { background: #f5f5f5; border-radius: 8px; }
-.secao-label        { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#9e9e9e; margin:0 0 4px; }
+.secao-label        { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#9e9e9e; margin:0 0 15px; }
 .info-row           { display:flex; justify-content:space-between; align-items:center; padding: 4px 0; }
-.info-label         { font-size:12px; color:#9e9e9e; }
-.info-val           { font-size:12px; color:#424242; max-width:55%; text-align:right; }
+.info-label         { font-size:13px; color:#9e9e9e; }
+.info-val           { font-size:13px; color:#424242; max-width:55%; text-align:right; }
 .upload-area        { border: 2px dashed #e0e0e0; transition: border-color .2s, background .2s; min-height: 100px; }
 .upload-area:hover  { border-color: #7f56d8; background: rgba(127,86,216,0.03); }
 .preview-item       { display:flex; flex-direction:column; align-items:center; width:100px; }

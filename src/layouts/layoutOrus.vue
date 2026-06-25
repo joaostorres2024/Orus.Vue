@@ -70,13 +70,6 @@
           </div>
           <div class="text-grey-5" style="font-size: 11px">{{ currentDate }}</div>
         </q-toolbar-title>
-        <q-btn flat round dense icon="o_notifications" class="text-grey-7 q-mr-xs" />
-        <div
-          class="bg-primary row items-center justify-center text-white text-bold"
-          style="width: 30px; height: 30px; border-radius: 100px; font-size: 12px"
-        >
-          {{ inicialNome }}
-        </div>
       </q-toolbar>
     </q-header>
 
