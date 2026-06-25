@@ -454,7 +454,7 @@ export default class Chamados extends Vue {
 
   urlAnexo(caminho: string) {
     const nome = caminho.replace(/^uploads[\\/]/, '')
-    return `http://localhost:3001/uploads/${nome}`
+    return `https://orus-api-zsoq.onrender.com/uploads${nome}`
   }
   abrirLightbox(anexo: any) { this.imagemAberta = this.urlAnexo(anexo.caminho); this.lightbox = true }
 

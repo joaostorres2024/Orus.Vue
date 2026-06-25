@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Notify } from 'quasar'
 
 const api = axios.create({
-  baseURL: process.env.API_URL || 'http://localhost:3001/api',
+  baseURL: process.env.API_URL || 'https://orus-api-zsoq.onrender.com',
   timeout: 15000,
 })
 
